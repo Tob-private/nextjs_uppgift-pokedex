@@ -4,6 +4,7 @@ import Image from "next/image";
 import PokemonTypePill from "./PokemonTypePill";
 import { PokemonTypes } from "@/data/pokemon-types";
 import TypeSpriteColor from "@/types/type-sprite-color";
+import PokemonStat from "./PokemonStat";
 
 export default function PokemonCard({ pokemon }: { pokemon: Pokemon }) {
     const { id, name, sprites, types, stats }: { id: number, name: string, sprites: any, types: PokemonType[], stats: StatElement[] } = pokemon
@@ -12,17 +13,17 @@ export default function PokemonCard({ pokemon }: { pokemon: Pokemon }) {
 
     const image: string = sprites.front_default ?? "/img-notfound.png"
 
-    const selectedStats = stats
-        .filter(({ stat }: StatElement) => desiredStats.includes(stat.name))
-        .reduce(
-            (acc: any, { stat, base_stat }: { base_stat: number, [property: string]: any }) => ({ ...acc, [stat.name]: base_stat }),
-            {} as { hp: number; attack: number; defense: number }
-        )
-
     const filteredTypes: TypeSpriteColor[] = PokemonTypes.filter((type: TypeSpriteColor) => {
         return types.some((element: PokemonType) => type.name === element.type.name);
     });
+    const filteredStats = stats.filter((stat) => {
+        return desiredStats.some((element: string) => stat.stat.name === element);
+    });
 
+    console.log(filteredStats);
+    
+
+    
 
 
     return (
@@ -38,11 +39,12 @@ export default function PokemonCard({ pokemon }: { pokemon: Pokemon }) {
                     style={{ backgroundColor: filteredTypes[0].color }}
                 >#{id}</p>
                 <h3 className="capitalize text-2xl">{name}</h3>
-            </CardContent>
-            <CardFooter>
                 <span className="flex gap-1 justify-center">
                     {filteredTypes.map((type: TypeSpriteColor) => <PokemonTypePill type={type} key={type.name} />)}
                 </span>
+            </CardContent>
+            <CardFooter className="flex flex-col">
+                {filteredStats.map((stat) => <PokemonStat stat={stat} key={stat.stat.name}/>)}
             </CardFooter>
         </Card>
     );
