@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Jaldi, Jersey_10 } from "next/font/google";
-import "./globals.css";
+import "@/app/globals.css";
 
 const jaldi = Jaldi({
   subsets: ["latin"],
