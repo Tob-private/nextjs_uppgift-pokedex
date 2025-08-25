@@ -21,16 +21,16 @@ export default function PokemonCard({ pokemon }: { pokemon: Pokemon }) {
     });
 
     console.log(filteredStats);
-    
 
-    
+
+
 
 
     return (
-        <Card className={"w-70 text-center border-4 shadow-xl"} style={{ borderColor: filteredTypes[0].color }}>
+        <Card className={"w-70 text-center border-6 shadow-xl border-[#637CCE]"}>
             <CardHeader>
                 <CardTitle className="grid place-items-center">
-                    <Image src={image} alt={name} width={150} height={150} />
+                    <Image src={image} alt={name} width={150} height={150} className="rounded-full border-4" style={{ borderColor: filteredTypes[0].color }} />
                 </CardTitle>
             </CardHeader>
             <CardContent className="flex flex-col">
@@ -44,7 +44,7 @@ export default function PokemonCard({ pokemon }: { pokemon: Pokemon }) {
                 </span>
             </CardContent>
             <CardFooter className="flex flex-col">
-                {filteredStats.map((stat) => <PokemonStat stat={stat} key={stat.stat.name}/>)}
+                {filteredStats.map((stat) => <PokemonStat stat={stat} key={stat.stat.name} />)}
             </CardFooter>
         </Card>
     );
