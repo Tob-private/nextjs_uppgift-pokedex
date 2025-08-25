@@ -6,6 +6,9 @@ export const getPokemonsByIDs = async (ids: number[]): Promise<Pokemon[]> => {
             const pokemonJSON = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
             return await pokemonJSON.json()
         })
+
     )
+    await new Promise(resolve => setTimeout(resolve, 2000))
+
     return pokemons
 }
