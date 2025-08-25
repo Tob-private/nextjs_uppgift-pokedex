@@ -24,8 +24,6 @@ export default function RandomPokemons() {
 
         getPokemonsByIDs(randomIDs).then(async (data) => {
             setPokemons(data);
-            console.log("pokemons set");
-            
         });
     }, []);
 

@@ -20,12 +20,6 @@ export default function PokemonCard({ pokemon }: { pokemon: Pokemon }) {
         return desiredStats.some((element: string) => stat.stat.name === element);
     });
 
-    console.log(filteredStats);
-
-
-
-
-
     return (
         <Card className={"w-70 text-center border-6 shadow-xl border-[#637CCE]"}>
             <CardHeader>

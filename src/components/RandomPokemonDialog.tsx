@@ -1,5 +1,5 @@
 'use client'
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Pokemon } from "@/types/pokemon";
 import { getPokemonsByIDs } from "@/utils/pokemon";
 import Image from "next/image";
@@ -34,9 +34,8 @@ export default function RandomPokemonDialog() {
                     />
                     Random Pokémon</button>
             </DialogTrigger>
-
             <DialogContent showCloseButton={false} className="bg-transparent border-none shadow-none flex justify-center w-fit p-0">
-                {pokemon ? <PokemonCard pokemon={pokemon} /> : <Spinner variant="bars"/>}
+                {pokemon ? <PokemonCard pokemon={pokemon} /> : <Spinner variant="bars" />}
             </DialogContent>
         </Dialog>
     );
