@@ -40,7 +40,7 @@ export default function RootLayout({
             <ul className="flex flex-row gap-8 text-xl">
               <Link href={"/"}>Home</Link>
               <Link href={"/pokedex"}>Pokedex</Link>
-              <Link href={"/types"}>Types</Link>
+              <Link href={"/pokemon-types"}>Types</Link>
               <Link href={"/favourites"}>Favourites</Link>
             </ul>
           </nav>
