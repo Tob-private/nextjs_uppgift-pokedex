@@ -1,41 +1,56 @@
 'use client'
-import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Pokemon } from "@/types/pokemon";
-import { getPokemonsByIDs } from "@/utils/pokemon";
+
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import Image from "next/image";
 import { useState } from "react";
 import PokemonCard from "./PokemonCard";
 import { Spinner } from "./ui/shadcn-io/spinner";
-
+import { fetcher } from "@/helpers/api";
+import useSWR from "swr";
+import { notFound } from "next/navigation";
+import { DialogDescription, DialogTitle } from "@radix-ui/react-dialog";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 export default function RandomPokemonDialog() {
-    const [pokemon, setPokemon] = useState<Pokemon>();
+    const [randomNumber, setRandomNumber] = useState<number | null>(null);
 
+    // Fetch Pokémon only if randomNumber is set
+    const { data, error, isLoading } = useSWR(
+        randomNumber ? `https://pokeapi.co/api/v2/pokemon/${randomNumber}` : null,
+        fetcher
+    );
 
-    const fetchRandomPokemon = () => {
-        setPokemon(undefined)
-        const randomIDs: number[] = [];
-        randomIDs.push(Math.ceil(Math.random() * 1000));
+    if (error) {
+        notFound();
+    }
 
-        getPokemonsByIDs(randomIDs).then((data) => {
-            setPokemon(data[0]);
-        });
+    const handleRandomClick = () => {
+        setRandomNumber(Math.ceil(Math.random() * 1000));
     }
 
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <button className="btn-primary" onClick={fetchRandomPokemon}>
+                <button className="btn-primary" onClick={handleRandomClick}>
                     <Image
                         src="/Dice.svg"
                         width={25}
                         height={25}
                         alt="Dice"
                     />
-                    Random Pokémon</button>
+                    Random Pokémon
+                </button>
             </DialogTrigger>
             <DialogContent showCloseButton={false} className="bg-transparent border-none shadow-none flex justify-center w-fit p-0">
-                {pokemon ? <PokemonCard pokemon={pokemon} /> : <Spinner variant="bars" />}
+                <VisuallyHidden>
+                    <DialogTitle>Randomized Pokemon</DialogTitle>
+                    <DialogDescription>This is the pokemon you randomized</DialogDescription>
+                </VisuallyHidden>
+                {isLoading ? (
+                    <Spinner variant="bars" />
+                ) : error ? (
+                    <p>Error loading Pokémon.</p>
+                ) : <PokemonCard pokemon={data} />}
             </DialogContent>
         </Dialog>
     );

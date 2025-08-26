@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
-import { AlertCircleIcon, Link } from "lucide-react";
+import { AlertCircleIcon } from "lucide-react";
 import { ChangeEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Alert, AlertDescription, AlertTitle } from "./ui/alert";

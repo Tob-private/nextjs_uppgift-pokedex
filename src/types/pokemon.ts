@@ -7,9 +7,9 @@ export interface Pokemon {
     /** A set of cries used to depict this Pokémon in the game. A visual representation of the various cries can be found at <a href='https://github.com/PokeAPI/cries#cries'>PokeAPI/cries</a> */
     cries: Cries;
     /** A list of forms this Pokémon can take on. */
-    forms: any[];
+    forms: unknown[];
     /** A list of game indices relevent to Pokémon item by generation. */
-    game_indices: any[];
+    game_indices: unknown[];
     /** The height of this Pokémon in decimetres. */
     height: number;
     /** A list of items this Pokémon may be holding when encountered. */
@@ -30,7 +30,7 @@ export interface Pokemon {
     /** A list of details showing types this pokémon had in previous generations */
     past_types: PastType[];
     /** The species this Pokémon belongs to. */
-    species: any;
+    species: unknown;
     /** A set of sprites used to depict this Pokémon in the game. A visual representation of the various sprites can be found at <a href='https://github.com/PokeAPI/sprites#sprites'>PokeAPI/sprites</a> */
     sprites: PokemonSprites;
     /** A list of base stat values for this Pokémon. */
@@ -39,67 +39,67 @@ export interface Pokemon {
     types: PokemonType[];
     /** The weight of this Pokémon in hectograms. */
     weight: number;
-    [property: string]: any;
+    [property: string]: unknown;
 }
 
 export interface PokemonAbility {
     /** The ability the Pokémon may have. */
-    ability: any;
+    ability: unknown;
     /** Whether or not this is a hidden ability. */
     is_hidden: boolean;
     /** The slot this ability occupies in this Pokémon species. */
     slot: number;
-    [property: string]: any;
+    [property: string]: unknown;
 }
 
 export interface Cries {
     latest: string;
     legacy: null | string;
-    [property: string]: any;
+    [property: string]: unknown;
 }
 
 export interface HeldItem {
-    item: any;
+    item: unknown;
     version_details: RarityVersion[];
-    [property: string]: any;
+    [property: string]: unknown;
 }
 
 export interface MoveElement {
-    move: any;
+    move: unknown;
     version_group_details: VersionGroupDetail[];
-    [property: string]: any;
+    [property: string]: unknown;
 }
 
 export interface VersionGroupDetail {
     level_learned_at: number;
-    move_learn_method: any;
-    version_group: any;
-    [property: string]: any;
+    move_learn_method: unknown;
+    version_group: unknown;
+    [property: string]: unknown;
 }
 
 export interface PastAbility {
     abilities: PastAbilityAbility[];
-    generation: any;
-    [property: string]: any;
+    generation: unknown;
+    [property: string]: unknown;
 }
 
 export interface PastAbilityAbility {
-    ability: any;
+    ability: unknown;
     is_hidden: boolean;
     slot: number;
-    [property: string]: any;
+    [property: string]: unknown;
 }
 
 export interface PastType {
-    generation: any;
+    generation: unknown;
     types: PastTypeType[];
-    [property: string]: any;
+    [property: string]: unknown;
 }
 
 export interface PastTypeType {
     slot: number;
-    type: any;
-    [property: string]: any;
+    type: unknown;
+    [property: string]: unknown;
 }
 
 export interface PokemonSprites {
@@ -119,28 +119,28 @@ export interface PokemonSprites {
     front_shiny: null | string;
     /** The shiny female depiction of this Pokémon from the front in battle. */
     front_shiny_female: null | string;
-    other: any;
-    versions: any;
-    [property: string]: any;
+    other: unknown;
+    versions: unknown;
+    [property: string]: unknown;
 }
 
 export interface StatElement {
     base_stat: number;
     effort: number;
-    stat: any;
-    [property: string]: any;
+    stat: unknown;
+    [property: string]: unknown;
 }
 
 export interface PokemonType {
     /** The order the Pokémon's types are listed in. */
     slot: number;
     /** The type the referenced Pokémon has. */
-    type: any;
-    [property: string]: any;
+    type: unknown;
+    [property: string]: unknown;
 }
 
 export interface RarityVersion {
     rarity: number;
-    version: any;
-    [property: string]: any;
+    version: unknown;
+    [property: string]: unknown;
 }
