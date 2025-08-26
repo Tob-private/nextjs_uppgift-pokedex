@@ -1,8 +1,8 @@
-export default function notFound() {
+export default function NotFound() {
     return (
         <div>
             <h1>
-                Page Not Found
+                Pokemon not found
             </h1>
         </div>
     );
