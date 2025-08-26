@@ -26,7 +26,7 @@ export default function RandomPokemons() {
     );
 
     return (
-        <article className="bg-gradient-to-br [background-image:linear-gradient(100deg,_#C97FE4,_#AECDF6)]">
+        <article className="bg-gradient-to-br [background-image:linear-gradient(100deg,_#C97FE4,_#AECDF6)] p-14">
             <h2 className="text-center text-5xl mb-8">Featured Pokémon</h2>
             <section className="flex justify-center gap-8">
                 {isLoading ? (
