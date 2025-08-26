@@ -28,7 +28,7 @@ export default function RandomPokemons() {
     }, []);
 
     return (
-        <article>
+        <article className="bg-gradient-to-br [background-image:linear-gradient(100deg,_#C97FE4,_#AECDF6)]">
             <h2 className="text-center text-5xl mb-8">Featured Pokémon</h2>
             <section className="flex justify-center gap-8">
                 {/* Cards with random pokemons */}
