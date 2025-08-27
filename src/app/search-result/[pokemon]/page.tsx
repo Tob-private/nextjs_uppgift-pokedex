@@ -1,20 +1,10 @@
-'use client'
 import PokemonCard from "@/components/PokemonCard";
-import { Spinner } from "@/components/ui/shadcn-io/spinner";
-import { fetcher } from "@/helpers/api";
-import { notFound, usePathname } from "next/navigation";
-import useSWR from "swr";
+import { getPokemonByIDs } from "@/helpers/api";
 
-export default function SearchResult() {
-    const pathStringID: string | undefined = usePathname().split("/").pop();
+export default async function SearchResult({ params }: { params: { pokemon: string } }) {
+    const ids = Array.from({ length: 4 }, () => Math.ceil(Math.random() * 1000));
 
-    if (!pathStringID) {
-        throw new Error("Path ID is undefined");
-    }
+    const pokemon = await getPokemonByIDs([params.pokemon])
 
-    const { data, error, isLoading } = useSWR(`https://pokeapi.co/api/v2/pokemon/${pathStringID}`, fetcher)
-
-    if (error) return notFound()
-
-    return isLoading ? <Spinner/> : (!isLoading && !data ? notFound() : <PokemonCard pokemon={data}/>)
+    return <PokemonCard pokemon={pokemon[0]} />;
 }
