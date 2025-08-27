@@ -1,4 +1,4 @@
-import { type Pokemon, type PokemonType, type StatElement } from "@/types/pokemon";
+import { PokemonSprites, type Pokemon, type PokemonType, type StatElement } from "@/types/pokemon";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "./ui/card";
 import Image from "next/image";
 import PokemonTypePill from "./PokemonTypePill";
@@ -7,7 +7,7 @@ import TypeSpriteColor from "@/types/type-sprite-color";
 import PokemonStat from "./PokemonStat";
 
 export default function PokemonCard({ pokemon }: { pokemon: Pokemon }) {
-    const { id, name, sprites, types, stats }: { id: number, name: string, sprites: unknown, types: PokemonType[], stats: StatElement[] } = pokemon
+    const { id, name, sprites, types, stats }: { id: number, name: string, sprites: PokemonSprites, types: PokemonType[], stats: StatElement[] } = pokemon
 
     const desiredStats: string[] = ["hp", "attack", "defense"]
 
@@ -16,7 +16,7 @@ export default function PokemonCard({ pokemon }: { pokemon: Pokemon }) {
     const filteredTypes: TypeSpriteColor[] = PokemonTypes.filter((type: TypeSpriteColor) => {
         return types.some((element: PokemonType) => type.name === element.type.name);
     });
-    const filteredStats = stats.filter((stat) => {
+    const filteredStats = stats.filter((stat: StatElement) => {
         return desiredStats.some((element: string) => stat.stat.name === element);
     });
 
@@ -33,12 +33,12 @@ export default function PokemonCard({ pokemon }: { pokemon: Pokemon }) {
                     style={{ backgroundColor: filteredTypes[0].color }}
                 >#{id}</p>
                 <h3 className="capitalize text-2xl">{name}</h3>
-                <span className="flex gap-1 justify-center">
+                <span className="flex gap-1 justify-center flex-wrap">
                     {filteredTypes.map((type: TypeSpriteColor) => <PokemonTypePill type={type} key={type.name} />)}
                 </span>
             </CardContent>
             <CardFooter className="flex flex-col">
-                {filteredStats.map((stat) => <PokemonStat stat={stat} key={stat.stat.name} />)}
+                {filteredStats.map((stat: StatElement) => <PokemonStat stat={stat} key={stat.stat.name} />)}
             </CardFooter>
         </Card>
     );

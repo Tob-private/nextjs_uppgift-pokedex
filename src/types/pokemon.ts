@@ -127,7 +127,10 @@ export interface PokemonSprites {
 export interface StatElement {
     base_stat: number;
     effort: number;
-    stat: unknown;
+    stat: {
+        name: string
+        url: string
+    };
     [property: string]: unknown;
 }
 
@@ -135,7 +138,10 @@ export interface PokemonType {
     /** The order the Pokémon's types are listed in. */
     slot: number;
     /** The type the referenced Pokémon has. */
-    type: unknown;
+    type: {
+        name: string
+        url: string
+    };
     [property: string]: unknown;
 }
 
