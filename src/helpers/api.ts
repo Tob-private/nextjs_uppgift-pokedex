@@ -1,3 +1,4 @@
+import { TypeType } from "@/data/types-types"
 import { Pokemon } from "@/types/pokemon"
 
 // Only use this in client components.
@@ -14,4 +15,8 @@ export const getPokemonByIDs = async (ids: number[] | string[]): Promise<Pokemon
     ids.map(id => fetcher(`https://pokeapi.co/api/v2/pokemon/${id}`))
   )
   return pokemons as Pokemon[]
+}
+
+export const getTypeByID = async (typeName: string): Promise<TypeType> => {
+  return await fetcher(`https://pokeapi.co/api/v2/type/${typeName}`)
 }
