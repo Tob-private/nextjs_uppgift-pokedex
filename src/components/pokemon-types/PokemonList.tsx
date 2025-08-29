@@ -11,7 +11,6 @@ export default function PokemonList({ type }: { type: TypeType }) {
     const [expandedPokemon, setExpandedPokemon] = useState<Pokemon>()
     const [pokemonSprite, setPokemonSprite] = useState<string>()
     const typePokemons = type?.pokemon.map((pokemon) => pokemon.pokemon)
-    console.log(typePokemons);
 
     const handleClick = async (id: string) => {
         const pokemon = await fetchPokemonAction(id)
