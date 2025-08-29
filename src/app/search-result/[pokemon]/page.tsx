@@ -2,7 +2,12 @@ import PokemonCard from "@/components/PokemonCard";
 import { getPokemonByIDs } from "@/helpers/api";
 
 export default async function SearchResult({ params }: { params: { pokemon: string } }) {
-    const pokemon = await getPokemonByIDs([params.pokemon])
+    const awaitedParams = await params
+    const pokemon = await getPokemonByIDs([`${awaitedParams.pokemon}`])
 
-    return <PokemonCard pokemon={pokemon[0]} />;
+    return (
+        <article className="flex place-content-center w-full p-16">
+            <PokemonCard pokemon={pokemon[0]}/>
+        </article>
+    );
 }
