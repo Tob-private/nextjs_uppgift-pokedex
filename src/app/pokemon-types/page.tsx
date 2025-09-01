@@ -1,16 +1,23 @@
-import ParentWrapper from "@/components/pokemon-types/parent-wrapper";
+import PokemonList from "@/components/pokemon-types/PokemonList";
+import TypesSelect from "@/components/pokemon-types/TypesSelect";
 import { getTypeByID } from "@/helpers/api";
-import { TypeType } from "@/types/types-types";
 
-export default function Types() {
-     const fetchType = async (type: string): Promise<TypeType>=> {
-        'use server'
-        const data = await getTypeByID(type);
-        return data
-      };
+export default async function Types({
+    searchParams,
+}: {
+    searchParams: Promise<{ [key: string]: string | undefined }>;
+}) {
+    const { type } = await searchParams;
+
+    const data = await getTypeByID(type);
     return (
         <article className="flex flex-col place-items-center">
-            <ParentWrapper fetchFunc={fetchType}/>
+            <TypesSelect />
+            {data &&
+                <div className="w-4/6 m-auto flex flex-col place-items-center">
+                    <PokemonList type={data} />
+                </div>
+            }
         </article>
     );
 }

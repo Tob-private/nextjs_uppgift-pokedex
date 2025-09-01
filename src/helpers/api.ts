@@ -17,6 +17,9 @@ export const getPokemonByIDs = async (ids: number[] | string[]): Promise<Pokemon
   return pokemons as Pokemon[]
 }
 
-export const getTypeByID = async (typeName: string): Promise<TypeType> => {
+export const getTypeByID = async (typeName?: string): Promise<TypeType | undefined> => {
+  if (!typeName) {
+    return undefined
+  }
   return await fetcher(`https://pokeapi.co/api/v2/type/${typeName}`)
 }
