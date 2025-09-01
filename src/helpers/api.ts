@@ -1,4 +1,4 @@
-import { TypeType } from "@/data/types-types"
+import { TypeType } from "@/types/types-types"
 import { Pokemon } from "@/types/pokemon"
 
 // Only use this in client components.

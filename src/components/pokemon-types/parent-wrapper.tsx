@@ -3,15 +3,14 @@
 import { useState } from "react";
 import TypesSelect from "./TypesSelect";
 import PokemonList from "./PokemonList";
-import { fetchTypeAction } from "@/app/actions";
-import { TypeType } from "@/data/types-types";
+import { TypeType } from "@/types/types-types";
 
-export default function ParentWrapper() {
+export default function ParentWrapper({ fetchFunc }: { fetchFunc: (type: string) => Promise<TypeType> }) {
   const [typeData, setTypeData] = useState<TypeType>();
 
   const handleSelect = async (type: string) => {
     // call server action here
-    const data = await fetchTypeAction(type);
+    const data = await fetchFunc(type);
     setTypeData(data);
   };
 

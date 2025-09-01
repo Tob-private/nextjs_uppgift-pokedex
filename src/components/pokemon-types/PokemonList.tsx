@@ -1,5 +1,5 @@
 'use client'
-import { TypeType } from "@/data/types-types";
+import { TypeType } from "@/types/types-types";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../ui/accordion";
 import { fetchPokemonAction } from "@/app/actions";
 import { Pokemon, StatElement } from "@/types/pokemon";
