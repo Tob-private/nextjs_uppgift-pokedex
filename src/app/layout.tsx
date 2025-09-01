@@ -23,9 +23,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-  modal
+  modal,
+  drawer
 }: Readonly<{
   modal: React.ReactNode
+  drawer: React.ReactNode
   children: React.ReactNode
 }>) {
   return (
@@ -47,6 +49,7 @@ export default function RootLayout({
         </header>
         <main>
           {modal}
+          {drawer}
           {children}
         </main>
         <footer className="flex flex-col place-items-center p-16 bg-gray-600 text-white">

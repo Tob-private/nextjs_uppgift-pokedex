@@ -1,11 +1,11 @@
 'use client'
 import Image from "next/image";
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
+import { Button } from "../ui/button";
+import { Input } from "../ui/input";
 import { AlertCircleIcon } from "lucide-react";
 import { ChangeEvent, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
+import { Alert, AlertDescription, AlertTitle } from "../ui/alert";
 
 export default function SearchPokemon() {
     const [searchInput, setSearchInput] = useState<string>("")

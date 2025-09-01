@@ -7,7 +7,7 @@ export default function RandomPokemonButton() {
     const randomNumber = () => Math.ceil(Math.random() * 1000)
 
     return (
-        <button className="btn-primary" onClick={() => router.push(`/pokemon/${randomNumber()}`)}>
+        <button className="btn-primary" onClick={() => router.push(`/random-pokemon/${randomNumber()}`)}>
             <Image
                 src="/Dice.svg"
                 width={25}
