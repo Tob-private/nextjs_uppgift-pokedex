@@ -1,4 +1,3 @@
-// app/pokemon/Parent.tsx
 'use client'
 
 import { useState } from "react";

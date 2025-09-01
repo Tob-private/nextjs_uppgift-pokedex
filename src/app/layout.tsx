@@ -30,9 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${jaldi.variable} ${jersey.variable} antialiased`}
-      >
+      <body className={`${jaldi.variable} ${jersey.variable} antialiased min-h-screen`}>
         <header className="flex p-4 justify-between w-5/6 m-auto">
           <section className="flex place-items-center gap-4">
             <Image src={"/Logo.png"} alt="Org logo" width={40} height={40} className="justify-start" />
@@ -47,8 +45,10 @@ export default function RootLayout({
             </ul>
           </nav>
         </header>
-        {modal}
-        {children}
+        <main>
+          {modal}
+          {children}
+        </main>
         <footer className="flex flex-col place-items-center p-16 bg-gray-600 text-white">
           <section className="flex place-items-center gap-4 mb-6">
             <Image src={"/Logo.png"} alt="Org logo" width={50} height={50} className="justify-start" />

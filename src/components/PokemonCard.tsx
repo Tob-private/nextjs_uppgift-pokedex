@@ -21,7 +21,7 @@ export default function PokemonCard({ pokemon }: { pokemon: Pokemon }) {
     });
 
     return (
-        <Card className={"w-70 text-center border-6 shadow-xl border-[#637CCE]"}>
+        <Card className={"w-70 text-center border-6 shadow-xl border-[#637CCE] h-fit"}>
             <CardHeader>
                 <CardTitle className="grid place-items-center">
                     <Image src={image} alt={name} width={150} height={150} className="rounded-full border-4" style={{ borderColor: filteredTypes[0].color }} />
