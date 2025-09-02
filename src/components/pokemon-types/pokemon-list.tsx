@@ -4,21 +4,16 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "..
 import { fetchPokemonAction } from "@/app/actions";
 import { Pokemon, StatElement } from "@/types/pokemon";
 import { useState } from "react";
-import PokemonStat from "../PokemonStat";
+import PokemonStat from "../pokemon-stat";
 
 export default function PokemonList({ type }: { type: TypeType }) {
     const [expandedPokemon, setExpandedPokemon] = useState<Pokemon>()
-    // const [pokemonSprite, setPokemonSprite] = useState<string>()
     const typePokemons = type?.pokemon.map((pokemon) => pokemon.pokemon)
 
     const handleClick = async (id: string) => {
         const pokemon = await fetchPokemonAction(id)
         setExpandedPokemon(pokemon[0])
-        // if (expandedPokemon?.sprites.front_default) {
-        //     setPokemonSprite(expandedPokemon?.sprites.front_default)
-        // } else {
-        //     setPokemonSprite("/img-notfound.png")
-        // }
+       
     }
 
     return (

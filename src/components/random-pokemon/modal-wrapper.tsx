@@ -1,6 +1,6 @@
 'use client'
 
-import PokemonCard from '@/components/PokemonCard'
+import PokemonCard from '@/components/pokemon-card'
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog'
 import { Pokemon } from '@/types/pokemon'
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden'

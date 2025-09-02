@@ -1,6 +1,6 @@
-import RandomPokemonButton from "@/components/random-pokemon/RandomPokemonButton";
-import RandomPokemons from "@/components/RandomPokemons";
-import SearchPokemon from "@/components/search-pokemon/SearchPokemon";
+import RandomPokemonButton from "@/components/random-pokemon/random-pokemon-button";
+import RandomPokemons from "@/components/random-pokemons";
+import SearchPokemon from "@/components/search-pokemon/search-pokemon";
 
 export default function Home() {
   return (

@@ -5,8 +5,8 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import TypeSpriteColor from "@/types/type-sprite-color";
 import { PokemonTypes } from "@/data/pokemon-types";
-import PokemonTypePill from "../PokemonTypePill";
-import PokemonStat from "../PokemonStat";
+import PokemonTypePill from "../pokemon-type-pill";
+import PokemonStat from "../pokemon-stat";
 
 export default function DrawerWrapper({ pokemon }: { pokemon: Pokemon }) {
     const router = useRouter()

@@ -2,7 +2,7 @@
 
 import { PokemonTypes } from "@/data/pokemon-types";
 import TypeSpriteColor from "@/types/type-sprite-color";
-import PokemonTypePill from "../PokemonTypePill";
+import PokemonTypePill from "../pokemon-type-pill";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 

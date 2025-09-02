@@ -1,5 +1,5 @@
-import PokemonList from "@/components/pokemon-types/PokemonList";
-import TypesSelect from "@/components/pokemon-types/TypesSelect";
+import PokemonList from "@/components/pokemon-types/pokemon-list";
+import TypesSelect from "@/components/pokemon-types/types-select";
 import { getTypeByID } from "@/helpers/api";
 
 export default async function Types({

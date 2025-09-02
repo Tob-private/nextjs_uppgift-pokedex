@@ -1,5 +1,5 @@
 
-import PokemonCard from "./PokemonCard";
+import PokemonCard from "./pokemon-card";
 import { Pokemon } from "@/types/pokemon";
 import { getPokemonByIDs } from "@/helpers/api";
 

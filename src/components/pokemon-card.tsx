@@ -1,10 +1,10 @@
 import { PokemonSprites, type Pokemon, type PokemonType, type StatElement } from "@/types/pokemon";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "./ui/card";
 import Image from "next/image";
-import PokemonTypePill from "./PokemonTypePill";
+import PokemonTypePill from "./pokemon-type-pill";
 import { PokemonTypes } from "@/data/pokemon-types";
 import TypeSpriteColor from "@/types/type-sprite-color";
-import PokemonStat from "./PokemonStat";
+import PokemonStat from "./pokemon-stat";
 
 export default function PokemonCard({ pokemon }: { pokemon: Pokemon }) {
     const { id, name, sprites, types, stats }: { id: number, name: string, sprites: PokemonSprites, types: PokemonType[], stats: StatElement[] } = pokemon
