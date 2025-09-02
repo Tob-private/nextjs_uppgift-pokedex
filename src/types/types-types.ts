@@ -51,7 +51,7 @@ export interface TypeType {
   moves: NamedAPIResource[];
   name: string;
   names: TypeName[];
-  past_damage_relations: any[]; // can be expanded if needed
+  past_damage_relations: any[]; // eslint-disable-line
   pokemon: TypePokemon[];
   sprites: TypeSprites;
 }

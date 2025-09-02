@@ -12,7 +12,7 @@ export default function PokemonList({ type, pokemon }: { type: TypeType, pokemon
     const router = useRouter();
 
     const [expandedPokemon, setExpandedPokemon] = useState<Pokemon>()
-    const [previousPokemon, setPreviousPokemon] = useState<Pokemon>()
+    const [previousPokemon, setPreviousPokemon] = useState<Pokemon>() // eslint-disable-line
 
     const typePokemons = type?.pokemon.map((pokemon) => pokemon.pokemon)
 
@@ -31,7 +31,6 @@ export default function PokemonList({ type, pokemon }: { type: TypeType, pokemon
         router.push(`${pathname}?${params.toString()}`)
     }
 
-
     const searchParamsPokemon = searchParams.get("pokemon")
 
     return (
@@ -45,7 +44,7 @@ export default function PokemonList({ type, pokemon }: { type: TypeType, pokemon
                         <AccordionContent>
                             <Suspense>
                                 {expandedPokemon && (
-                                    expandedPokemon.stats.map((stat: StatElement, index) => {
+                                    expandedPokemon.stats.map((stat: StatElement) => {
                                         return <PokemonStat stat={stat} key={stat.stat.name} />
                                     }))}
                             </Suspense>
