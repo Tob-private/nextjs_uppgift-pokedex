@@ -12,6 +12,7 @@ export default function PokemonList({ type, pokemon }: { type: TypeType, pokemon
     const router = useRouter();
 
     const [expandedPokemon, setExpandedPokemon] = useState<Pokemon>()
+    const [previousPokemon, setPreviousPokemon] = useState<Pokemon>()
 
     const typePokemons = type?.pokemon.map((pokemon) => pokemon.pokemon)
 
@@ -22,6 +23,9 @@ export default function PokemonList({ type, pokemon }: { type: TypeType, pokemon
     }, [pokemon])
 
     const handleClick = (name: string) => {
+        // I genuinelly have no idea why, but this fixes a weird "jump" that the acc. items do when clicking on another item
+        setPreviousPokemon(expandedPokemon)
+
         const params = new URLSearchParams(searchParams.toString())
         params.set("pokemon", name)
         router.push(`${pathname}?${params.toString()}`)
@@ -41,9 +45,9 @@ export default function PokemonList({ type, pokemon }: { type: TypeType, pokemon
                         <AccordionContent>
                             <Suspense>
                                 {expandedPokemon && (
-                                    expandedPokemon.stats.map((stat: StatElement) => (
-                                        <PokemonStat stat={stat} key={stat.stat.name} />
-                                    )))}
+                                    expandedPokemon.stats.map((stat: StatElement, index) => {
+                                        return <PokemonStat stat={stat} key={stat.stat.name} />
+                                    }))}
                             </Suspense>
                         </AccordionContent>
                     </AccordionItem>
