@@ -2,10 +2,9 @@
 import { TypeType } from "@/types/types-types";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../ui/accordion";
 import { type Pokemon, type StatElement } from "@/types/pokemon";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import PokemonStat from "../pokemon-stat";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { Skeleton } from "../ui/skeleton";
 
 export default function PokemonList({ type, pokemon }: { type: TypeType, pokemon: Pokemon | undefined }) {
     const searchParams = useSearchParams();
@@ -14,21 +13,20 @@ export default function PokemonList({ type, pokemon }: { type: TypeType, pokemon
 
     const [expandedPokemon, setExpandedPokemon] = useState<Pokemon>()
 
-    // Update local state when prop changes
+    const typePokemons = type?.pokemon.map((pokemon) => pokemon.pokemon)
+
     useEffect(() => {
         if (pokemon) {
             setExpandedPokemon(pokemon)
         }
     }, [pokemon])
 
-    const typePokemons = type?.pokemon.map((pokemon) => pokemon.pokemon)
-
     const handleClick = (name: string) => {
-        const params = new URLSearchParams(searchParams.toString());
-        params.set("pokemon", name);
-        router.push(`${pathname}?${params.toString()}`);
-        setExpandedPokemon(undefined)
-    };
+        const params = new URLSearchParams(searchParams.toString())
+        params.set("pokemon", name)
+        router.push(`${pathname}?${params.toString()}`)
+    }
+
 
     const searchParamsPokemon = searchParams.get("pokemon")
 
@@ -41,21 +39,16 @@ export default function PokemonList({ type, pokemon }: { type: TypeType, pokemon
                             {name}
                         </AccordionTrigger>
                         <AccordionContent>
-                            {!expandedPokemon ? (
-                                <div className="flex gap-1 flex-wrap justify-between">
-                                    {Array.from({ length: 6 }).map((_, i) => (
-                                        <Skeleton key={i} className="h-5 w-full" />
-                                    ))}
-                                </div>
-                            ) : (
-                                expandedPokemon.stats.map((stat: StatElement) => (
-                                    <PokemonStat stat={stat} key={stat.stat.name} />
-                                ))
-                            )}
+                            <Suspense>
+                                {expandedPokemon && (
+                                    expandedPokemon.stats.map((stat: StatElement) => (
+                                        <PokemonStat stat={stat} key={stat.stat.name} />
+                                    )))}
+                            </Suspense>
                         </AccordionContent>
                     </AccordionItem>
                 )
             })}
-        </Accordion>
+        </Accordion >
     );
 }
