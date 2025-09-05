@@ -1,11 +1,17 @@
 import { TypeType } from "@/types/types-types"
 import { Pokemon } from "@/types/pokemon"
+import { notFound } from "next/navigation";
 
 // Only use this in client components.
 export const fetcher = async (...args: Parameters<typeof fetch>) => {
   const res = await fetch(...args)
   if (!res.ok) {
-    throw new Error(`An error occurred: ${res.status} ${res.statusText}`)
+    if (res.statusText === "Not Found") {
+      notFound()
+    } else {
+      throw new Error(`An error occurred: ${res.status} ${res.statusText}`)
+    }
+
   }
   return res.json()
 }
